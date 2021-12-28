@@ -1,0 +1,1 @@
+{"name":"connect-logger","dist-tags":{"latest":"0.0.1"},"versions":{"0.0.1":{"name":"connect-logger","version":"0.0.1","dependencies":{"moment":"*"},"devDependencies":{"coffee-script":"*"},"dist":{"shasum":"4d999978a1d20bb4608e7cd434d741652255174b","tarball":"https://registry.npmjs.org/connect-logger/-/connect-logger-0.0.1.tgz"}}},"modified":"2017-01-18T16:37:58.007Z"}
