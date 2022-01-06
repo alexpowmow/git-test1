@@ -6,6 +6,14 @@ class DishDetail extends Component {
     constructor(props) {
         super(props);
     }
+
+componentDidMount(){
+  console.log('Dishdetail ComponentDidMount invoked');
+}
+
+componentDidUpdate(){
+  console.log('Dishdetail componentDidUpdate invoked');
+}
     renderComments(comments) {
         if (comments != null) {
         const options = { year: "numeric", month: "long", day: "numeric" };
@@ -34,7 +42,15 @@ class DishDetail extends Component {
     
     
     render() {
+      console.log('Dishdetail Component render invoked');
         const { dish } = this.props;
+        if( dish == null){
+          return(
+            <div>
+
+            </div>
+        )
+        }else{
         return (
             <div className="row">
               <div className="col-12 col-md-5 m-1">
@@ -53,6 +69,7 @@ class DishDetail extends Component {
             </div>
           );
         }
+      }
 }
 
 export default DishDetail;
