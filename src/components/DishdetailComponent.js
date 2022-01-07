@@ -1,20 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 
 
-class DishDetail extends Component {
-    constructor(props) {
-        super(props);
-    }
 
-componentDidMount(){
-  console.log('Dishdetail ComponentDidMount invoked');
-}
 
-componentDidUpdate(){
-  console.log('Dishdetail componentDidUpdate invoked');
-}
-    renderComments(comments) {
+
+// componentDidMount(){
+//   console.log('Dishdetail ComponentDidMount invoked');
+// }
+
+// componentDidUpdate(){
+//   console.log('Dishdetail componentDidUpdate invoked');
+// }
+    
+function RenderComments({comments}) {
         if (comments != null) {
         const options = { year: "numeric", month: "long", day: "numeric" };
         return comments.map(comment => (
@@ -41,9 +40,9 @@ componentDidUpdate(){
       }
     
     
-    render() {
+   const DishDetail = ({dish}) => {
       console.log('Dishdetail Component render invoked');
-        const { dish } = this.props;
+       
         if( dish == null){
           return(
             <div>
@@ -64,12 +63,13 @@ componentDidUpdate(){
               </div>
               <div className="col-12 col-md-5 m-1">
                 <h3>Comments</h3>
-                {this.renderComments(dish.comments)}
+                <RenderComments dish = {dish.comments} />
               </div>
             </div>
           );
         }
       }
-}
+    
+
 
 export default DishDetail;
