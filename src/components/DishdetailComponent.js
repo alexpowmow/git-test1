@@ -63,7 +63,7 @@ function RenderComments({comments}) {
               </div>
               <div className="col-12 col-md-5 m-1">
                 <h3>Comments</h3>
-                <RenderComments dish = {dish.comments} />
+                <RenderComments comments = {dish.comments} />
               </div>
             </div>
           );
