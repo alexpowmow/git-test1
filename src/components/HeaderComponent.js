@@ -22,26 +22,23 @@ class Header extends Component {
         return(
             <React.Fragment>
             <Navbar dark expand = "md">
-                <div className = "container">
-                    <NavbarToggler onClick= {this.toggleNav} />
+               
+                    
                     <NavbarBrand className = "mr-auto" href ="/"> 
                     <img src="assets/images/logo.png" height = "30" width = "41" alt = "Ristorante Con Fusion" />
                     </NavbarBrand>
-                 </div>
+                    <NavbarToggler onClick= {this.toggleNav} />
+                 
 
                 <Collapse isOpen= {this.state.isNavOpen} navbar>
-                 <Nav navbar>
-                     <NavItem>
+                 <Nav className = "me-auto" navbar >
+                     <NavItem className = "mr-left">
                          <NavLink className = "nav-link " to = "/home">
-                         <span className= "fa fa-home fa-lg" ></span> Home
-                         
-                         </NavLink>
+                         <span className= "fa fa-home fa-lg"  ></span> Home</NavLink>
                      </NavItem>
 
                      <NavItem>
-                         <NavLink className = "nav-link" to = "/aboutus">
-                             <span className= "fa fa-info fa-lg"> </span> About Us
-                         </NavLink>
+                         <NavLink className = "nav-link" to = "/aboutus"><span className= "fa fa-info fa-lg"> </span> About Us</NavLink>
                      </NavItem>
 
                      <NavItem>
@@ -55,6 +52,7 @@ class Header extends Component {
                              <span className= "fa fa-address-card fa-lg"></span> Contact Us
                          </NavLink>
                      </NavItem>
+                     
                  </Nav>
                  </Collapse>
             </Navbar>
