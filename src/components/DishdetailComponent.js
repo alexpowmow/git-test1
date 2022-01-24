@@ -4,6 +4,8 @@ import {Button, Modal, ModalHeader, ModalBody, Label, Row, Col} from 'reactstrap
 import {Link} from 'react-router-dom';
 import {Control, LocalForm, Errors} from 'react-redux-form';
 import {Loading} from './LoadingComponent';
+import {baseUrl} from '../shared/baseUrl';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
 
 // componentDidMount(){
 //   console.log('Dishdetail ComponentDidMount invoked');
@@ -36,7 +38,7 @@ class CommentForm extends Component {
 
   handleSubmit(values){
       // console.log("Current State is: " + JSON.stringify(values));
-      console.log(this.props.addComment(this.props.dishId, values.rating, values.name, values.message));
+      console.log(this.props.postComment(this.props.dishId, values.rating, values.name, values.message));
     
   }
 
@@ -102,24 +104,28 @@ class CommentForm extends Component {
 }
 
     
-function RenderComments({comments, addComment, dishId}) {
+function RenderComments({comments, postComment, dishId}) {
         if (comments != null) {
         const options = { year: "numeric", month: "long", day: "numeric" };
         return(
           <div className= "col-12 col-md-5 m-1">
         <h4>Comments</h4>
         <ul className = "list-unstyled">
+        <Stagger in>
         {comments.map((comment) => {
           return(
+            <Fade in>
             <li key={comment.id}>
             <p>{comment.comment}</p>
             <p> -- {comment.author} , {new Date(comment.date).toLocaleDateString("en-US", options)}</p>
             </li>
+            </Fade>
           );
         })}
+        </Stagger>
         </ul>
 
-       <CommentForm dishId={dishId} addComment={addComment}/>
+       <CommentForm dishId={dishId} postComment={postComment}/>
         </div>
        
       );
@@ -137,13 +143,15 @@ function RenderComments({comments, addComment, dishId}) {
     return(
      
       <div className="col-12 col-md-5 m-1">
+        <FadeTransform in transformProps = {{exitTransform: 'scale(0.5) translateY(-50%)'}}>
         <Card>
-          <CardImg top width="100%" src={dish.image} alt={dish.name} />
+          <CardImg top width="100%" src={baseUrl + dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle tag="h5"> {dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
           </CardBody>
         </Card>
+        </FadeTransform>
       </div>
      
     );
@@ -189,7 +197,7 @@ function RenderComments({comments, addComment, dishId}) {
               </div>
               <div className="row">
                   <RenderDish dish= {props.dish} />
-                  <RenderComments comments = {props.comments} addComment={props.addComment} dishId={props.dish.id} />
+                  <RenderComments comments = {props.comments} postComment={props.postComment} dishId={props.dish.id} />
               </div>
             </div>
           );
